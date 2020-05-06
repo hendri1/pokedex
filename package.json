@@ -5,9 +5,9 @@
   "description": "Pokedex Application",
   "author": "hendrifaisal18@gmail.com",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "cross-env NODE_ENV=development react-scripts start",
+    "build": "cross-env NODE_ENV=production react-scripts build",
+    "test": "cross-env NODE_ENV=test react-scripts test",
     "eject": "react-scripts eject",
     "release": "standard-version",
     "lint:check": "standard",
@@ -37,6 +37,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
