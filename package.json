@@ -4,20 +4,14 @@
   "private": true,
   "description": "Pokedex Application",
   "author": "hendrifaisal18@gmail.com",
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "release": "standard-version"
+    "release": "standard-version",
+    "lint:check": "standard",
+    "lint:fix": "standard --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,7 +28,29 @@
       "last 1 safari version"
     ]
   },
+  "standard": {
+    "ignore": [
+      "*.test.js"
+    ]
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
+  },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "standard": "^14.3.3",
     "standard-version": "^7.1.0"
   }
 }
