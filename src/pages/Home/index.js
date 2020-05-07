@@ -1,32 +1,51 @@
 import React, { useState, useEffect } from 'react'
+// import { MyCard } from 'components/molecules'
+import { MyCardList } from 'components/organisms'
 
-import { MyService } from 'services'
+import { PokemonGetListService } from 'services'
 
 const Home = () => {
-  const [employee, setEmployees] = useState({})
+  const [pokemonList, setPokemonList] = useState([])
+  const [content, setContent] = useState([])
 
   useEffect(() => {
-    let subscribeEmployee = true
+    let subscribePokemon = true
 
-    async function getEmployee () {
-      const response = await MyService()
-      if (subscribeEmployee) setEmployees(response)
+    async function getPokemonList () {
+      const payload = {}
+      const response = await PokemonGetListService(payload)
+      if (subscribePokemon) setPokemonList(response.results)
     }
 
-    getEmployee()
+    getPokemonList()
 
     return () => {
-      subscribeEmployee = false
+      subscribePokemon = false
     }
   }, [])
 
   useEffect(() => {
-    console.log(employee)
-  }, [employee])
+    const elem = []
+    pokemonList.forEach((pokemon, index) => {
+      const id = pokemon.url.substr(pokemon.url.length - 2, 1)
+      console.log(id)
+      elem.push(
+        <MyCardList.Card
+          key={index}
+          avatarSuffix={pokemon.name ? pokemon.name.charAt(0) : ''}
+          labelName={pokemon.name}
+          sourceImage={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+        />
+      )
+    })
+    setContent(elem)
+  }, [pokemonList])
 
   return (
     <div>
-      <h1>React Boilerplate v{process.env.REACT_APP_VERSION}</h1>
+      <MyCardList>
+        {content}
+      </MyCardList>
     </div>
   )
 }
