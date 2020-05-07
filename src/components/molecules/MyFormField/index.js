@@ -5,6 +5,14 @@ import styled from 'styled-components'
 import { MyLabel, MyInput } from 'components/atoms'
 
 const MyFormFieldStyled = styled.div`
+  border: 0;
+  margin: 0;
+  display: inline-flex;
+  padding: 0;
+  position: relative;
+  min-width: 0;
+  flex-direction: column;
+  vertical-align: top;
 `
 
 function MyFormField (props) {

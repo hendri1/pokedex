@@ -4,7 +4,7 @@ import { AppRoutes } from 'routes'
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         {AppRoutes.map(route => <Route key={route} {...route} />)}
       </Switch>
