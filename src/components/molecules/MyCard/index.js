@@ -36,7 +36,7 @@ const MyCardFooterStyled = styled.div`
 `
 
 function MyCard (props) {
-  const { avatarSuffix, labelName, sourceImage, children } = props
+  const { avatarSuffix, labelName, sourceImage, altImage, children } = props
 
   const Children = React.Children.toArray(children)
 
@@ -44,7 +44,10 @@ function MyCard (props) {
     if (!sourceImage) return
 
     return (
-      <MyImage source={sourceImage} />
+      <MyImage
+        source={sourceImage}
+        altImage={altImage}
+      />
     )
   }
 
@@ -97,13 +100,15 @@ MyCard.propTypes = {
   avatarSuffix: PropTypes.string,
   labelName: PropTypes.string,
   sourceImage: PropTypes.string,
+  altImage: PropTypes.string,
   children: PropTypes.any
 }
 
 MyCard.defaultProps = {
   avatarSuffix: '',
   labelName: '',
-  sourceImage: ''
+  sourceImage: '',
+  altImage: ''
 }
 
 function MyCardContent ({ children }) {

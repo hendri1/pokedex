@@ -12,21 +12,26 @@ const MyImageStyled = styled.img`
 `
 
 function MyImage (props) {
-  const { source } = props
+  const { source, altImage } = props
 
   return (
     <MyImageWrapperStyled>
-      <MyImageStyled src={source} />
+      <MyImageStyled
+        src={source}
+        alt={altImage}
+        loading='lazy'
+      />
     </MyImageWrapperStyled>
   )
 }
 
 MyImage.propTypes = {
-  source: PropTypes.string
+  source: PropTypes.string.isRequired,
+  altImage: PropTypes.string
 }
 
 MyImage.defaultProps = {
-  source: ''
+  altImage: 'default alt'
 }
 
 export default MyImage

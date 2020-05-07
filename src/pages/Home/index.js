@@ -46,6 +46,7 @@ const Home = () => {
           avatarSuffix={pokemon.name ? pokemon.name.charAt(0) : ''}
           labelName={pokemon.name}
           sourceImage={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+          altImage={pokemon.name}
         />
       )
     })

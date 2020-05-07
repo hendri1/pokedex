@@ -12,7 +12,7 @@ function MyCardList ({ children }) {
 
   function RenderCard () {
     return React.Children.map(Children, (item, itemIndex) => {
-      const { avatarSuffix, labelName, sourceImage, children } = item.props
+      const { avatarSuffix, labelName, sourceImage, altImage, children } = item.props
 
       return (
         <MyCard
@@ -20,6 +20,7 @@ function MyCardList ({ children }) {
           avatarSuffix={avatarSuffix}
           labelName={labelName}
           sourceImage={sourceImage}
+          altImage={altImage}
         >
           {children}
         </MyCard>
