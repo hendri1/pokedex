@@ -130,7 +130,7 @@ MyCard.propTypes = {
 }
 
 MyCard.defaultProps = {
-  id: 0,
+  id: '',
   avatarSuffix: '',
   labelName: '',
   sourceImage: '',
@@ -140,7 +140,9 @@ MyCard.defaultProps = {
 
 function MyCardContent ({ children }) {
   return (
-    <div dangerouslySetInnerHTML={{ __html: children }} />
+    <div>
+      {children}
+    </div>
   )
 }
 
@@ -152,7 +154,9 @@ MyCard.Content = MyCardContent
 
 function MyCardFooter ({ children }) {
   return (
-    <div dangerouslySetInnerHTML={{ __html: children }} />
+    <div>
+      {children}
+    </div>
   )
 }
 
