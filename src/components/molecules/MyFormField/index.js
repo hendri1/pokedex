@@ -15,16 +15,20 @@ const MyFormFieldStyled = styled.div`
   vertical-align: top;
 `
 
-function MyFormField (props) {
+const MyFormField = React.forwardRef((props, ref) => {
   const { labelTitle, name, type } = props
 
   return (
     <MyFormFieldStyled>
       <MyLabel title={labelTitle} />
-      <MyInput name={name} type={type} />
+      <MyInput
+        ref={ref}
+        name={name}
+        type={type}
+      />
     </MyFormFieldStyled>
   )
-}
+})
 
 MyFormField.propTypes = {
   labelTitle: PropTypes.string.isRequired,

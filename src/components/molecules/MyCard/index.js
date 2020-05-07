@@ -120,7 +120,7 @@ function MyCard (props) {
 }
 
 MyCard.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   avatarSuffix: PropTypes.string,
   labelName: PropTypes.string,
   sourceImage: PropTypes.string,

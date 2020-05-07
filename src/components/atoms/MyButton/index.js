@@ -6,7 +6,7 @@ const MyButtonStyled = styled.button`
   background-color: rgb(17, 82, 147);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
   color: #fff;
-  margin: 8px 0px;
+  margin: 15px;
   padding: 6px 10px;
   font-size: 0.875rem;
   min-width: 64px;
@@ -23,17 +23,18 @@ const MyButtonStyled = styled.button`
 `
 
 function MyButton (props) {
-  const { title } = props
+  const { title, onClick } = props
 
   return (
-    <MyButtonStyled>
+    <MyButtonStyled onClick={onClick}>
       {title}
     </MyButtonStyled>
   )
 }
 
 MyButton.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func
 }
 
 export default MyButton
