@@ -14,7 +14,11 @@ export const convertDate = date => {
   return moment(date).format('DD MMMM YYYY')
 }
 
-export const checkToken = date => {
+export const randomHexaColor = () => {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`
+}
+
+export const checkToken = (token = '') => {
   return Cookie.get(process.env.REACT_APP_SESSION_NAME)
 }
 
