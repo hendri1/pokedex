@@ -4,7 +4,7 @@
   "private": true,
   "description": "Pokedex Application",
   "author": "hendrifaisal18@gmail.com",
-  "homepage": "http://hendri1.github.io/pokedex-gh-pages",
+  "homepage": "http://hendri1.github.io/pokedex",
   "scripts": {
     "start": "cross-env NODE_ENV=development react-scripts start",
     "build": "cross-env NODE_ENV=production react-scripts build",
