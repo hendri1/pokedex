@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
-import { MyButton } from 'components/atoms'
+import { MyLabel, MyButton } from 'components/atoms'
 import { MyCard } from 'components/molecules'
 
 import { PokemonGetService } from 'services'
@@ -37,6 +37,45 @@ const Home = () => {
     history.push('/')
   }
 
+  function renderAbilites () {
+    if (!pokemon.abilities) return <p>-</p>
+
+    const elem = []
+    pokemon.abilities.forEach((item, index) => {
+      elem.push(
+        <p key={index}>- {item.ability.name}</p>
+      )
+    })
+
+    return elem
+  }
+
+  function renderTypes () {
+    if (!pokemon.types) return <p>-</p>
+
+    const elem = []
+    pokemon.types.forEach((item, index) => {
+      elem.push(
+        <p key={index}>- {item.type.name}</p>
+      )
+    })
+
+    return elem
+  }
+
+  function renderStats () {
+    if (!pokemon.stats) return <p>-</p>
+
+    const elem = []
+    pokemon.stats.forEach((item, index) => {
+      elem.push(
+        <p key={index}>- {item.stat.name} : {item.base_stat}</p>
+      )
+    })
+
+    return elem
+  }
+
   return (
     <div>
       <MyCard
@@ -45,7 +84,25 @@ const Home = () => {
         sourceImage={pokemon.sprites ? pokemon.sprites.front_default : ''}
         altImage={pokemon.name}
         full
-      />
+      >
+        <MyCard.Content>
+          <MyLabel
+            title='Abilites'
+            bold
+          />
+          {renderAbilites()}
+          <MyLabel
+            title='Types'
+            bold
+          />
+          {renderTypes()}
+          <MyLabel
+            title='Stats'
+            bold
+          />
+          {renderStats()}
+        </MyCard.Content>
+      </MyCard>
       <MyButton
         title='Back'
         onClick={goBack}
