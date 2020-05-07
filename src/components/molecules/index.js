@@ -1,3 +1,4 @@
 import MyFormField from './MyFormField'
+import MyCard from './MyCard'
 
-export { MyFormField }
+export { MyFormField, MyCard }
