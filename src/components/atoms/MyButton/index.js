@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const MyButtonStyled = styled.button`
   background-color: rgb(17, 82, 147);
@@ -20,13 +20,22 @@ const MyButtonStyled = styled.button`
   text-transform: uppercase;
   border: none;
   cursor: pointer;
+
+  ${({ float }) => float && css`
+    position: fixed;
+    ${float}: 0;
+    bottom: 0;
+  `}
 `
 
 function MyButton (props) {
-  const { title, onClick } = props
+  const { title, onClick, float } = props
 
   return (
-    <MyButtonStyled onClick={onClick}>
+    <MyButtonStyled
+      onClick={onClick}
+      float={float}
+    >
       {title}
     </MyButtonStyled>
   )
@@ -34,7 +43,12 @@ function MyButton (props) {
 
 MyButton.propTypes = {
   title: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  float: PropTypes.string
+}
+
+MyButton.defaultProps = {
+  float: ''
 }
 
 export default MyButton

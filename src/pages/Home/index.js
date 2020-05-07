@@ -66,6 +66,13 @@ const Home = () => {
     history.push(`/detail?name=${name}`)
   }
 
+  function goToTop () {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmitSearch)}>
@@ -77,6 +84,11 @@ const Home = () => {
         />
         <MyButton title='Search' />
       </form>
+      <MyButton
+        title='Go to Top'
+        float='right'
+        onClick={() => goToTop()}
+      />
       <InfiniteScroll
         dataLength={pokemonList.length}
         next={fetchMoreData}
