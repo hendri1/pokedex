@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { MyCard } from 'components/molecules'
 
 const MyCardListStyled = styled.form`
+  padding: 20px;
 `
 
 function MyCardList ({ children }) {
@@ -12,10 +13,11 @@ function MyCardList ({ children }) {
 
   function RenderCard () {
     return React.Children.map(Children, (item, itemIndex) => {
-      const { avatarSuffix, labelName, sourceImage, altImage, children } = item.props
+      const { id, avatarSuffix, labelName, sourceImage, altImage, children } = item.props
 
       return (
         <MyCard
+          id={id}
           key={`card-${itemIndex}`}
           avatarSuffix={avatarSuffix}
           labelName={labelName}

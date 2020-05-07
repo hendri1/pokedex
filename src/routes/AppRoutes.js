@@ -1,4 +1,4 @@
-import { Home } from 'pages'
+import { Home, Detail } from 'pages'
 
 const appRoutes = [
   {
@@ -6,6 +6,12 @@ const appRoutes = [
     component: Home,
     exact: true,
     path: '/'
+  },
+  {
+    name: 'Detail',
+    component: Detail,
+    exact: true,
+    path: '/detail'
   }
 ]
 

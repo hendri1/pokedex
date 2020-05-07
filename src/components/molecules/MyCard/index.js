@@ -1,17 +1,32 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { MyAvatar, MyLabel, MyImage } from 'components/atoms'
 
 const MyCardStyled = styled.div`
-  max-width: 345px;
+  width: 30%;
+  min-height: 200px;
   overflow: hidden;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.87);
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   background-color: #fff;
+  margin: 20px;
+  float: left;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    background-color: #ccc;
+    transition: 0.5s;
+  }
+
+  ${({ full }) => full && css`
+    float: none;
+  `}
 `
 
 const MyCardHeaderStyled = styled.div`
@@ -36,9 +51,14 @@ const MyCardFooterStyled = styled.div`
 `
 
 function MyCard (props) {
-  const { avatarSuffix, labelName, sourceImage, altImage, children } = props
+  const history = useHistory()
+  const { id, avatarSuffix, labelName, sourceImage, altImage, full, children } = props
 
   const Children = React.Children.toArray(children)
+
+  function goToDetail (id) {
+    if (id) history.push(`/detail?id=${id}`)
+  }
 
   function RenderImage () {
     if (!sourceImage) return
@@ -78,7 +98,10 @@ function MyCard (props) {
   }
 
   return (
-    <MyCardStyled>
+    <MyCardStyled
+      full={full}
+      onClick={() => goToDetail(id)}
+    >
       <MyCardHeaderStyled>
         <MyAvatar suffix={avatarSuffix} />
         <MyCardHeaderContentStyled>
@@ -97,18 +120,22 @@ function MyCard (props) {
 }
 
 MyCard.propTypes = {
+  id: PropTypes.number,
   avatarSuffix: PropTypes.string,
   labelName: PropTypes.string,
   sourceImage: PropTypes.string,
   altImage: PropTypes.string,
+  full: PropTypes.bool,
   children: PropTypes.any
 }
 
 MyCard.defaultProps = {
+  id: 0,
   avatarSuffix: '',
   labelName: '',
   sourceImage: '',
-  altImage: ''
+  altImage: '',
+  full: false
 }
 
 function MyCardContent ({ children }) {
