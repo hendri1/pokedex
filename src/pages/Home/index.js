@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
+import { MyButton } from 'components/atoms'
+import { MyFormField } from 'components/molecules'
 import { MyCardList } from 'components/organisms'
 
 import { PokemonGetListService } from 'services'
@@ -67,14 +69,13 @@ const Home = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmitSearch)}>
-        <input
-          placeholder='search'
+        <MyFormField
+          labelTitle='Search By Name'
           name='name'
+          type='text'
           ref={register()}
         />
-        <button type='submit'>
-          Search
-        </button>
+        <MyButton title='Search' />
       </form>
       <InfiniteScroll
         dataLength={pokemonList.length}

@@ -22,13 +22,17 @@ const MyInputStyled = styled.input`
   outline: none;
 `
 
-function MyInput (props) {
+const MyInput = React.forwardRef((props, ref) => {
   const { name, type } = props
 
   return (
-    <MyInputStyled name={name} type={type} />
+    <MyInputStyled
+      ref={ref}
+      name={name}
+      type={type}
+    />
   )
-}
+})
 
 MyInput.propTypes = {
   name: PropTypes.string.isRequired,

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
+import { MyButton } from 'components/atoms'
 import { MyCard } from 'components/molecules'
 
 import { PokemonGetService } from 'services'
@@ -45,9 +46,10 @@ const Home = () => {
         altImage={pokemon.name}
         full
       />
-      <button onClick={goBack}>
-        Back
-      </button>
+      <MyButton
+        title='Back'
+        onClick={goBack}
+      />
     </div>
   )
 }
