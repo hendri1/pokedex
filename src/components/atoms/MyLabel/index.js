@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 const MyLabelStyled = styled.label`
   color: #000;
+  z-index: 1;
+  pointer-events: none;
 `
 
 function MyLabel (props) {
