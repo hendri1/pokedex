@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-// import { MyCard } from 'components/molecules'
+import InfiniteScroll from 'react-infinite-scroll-component'
+
 import { MyCardList } from 'components/organisms'
 
 import { PokemonGetListService } from 'services'
@@ -7,14 +8,23 @@ import { PokemonGetListService } from 'services'
 const Home = () => {
   const [pokemonList, setPokemonList] = useState([])
   const [content, setContent] = useState([])
+  const [offset, setOffset] = useState(0)
+  const [limit, setLimit] = useState(20)
+
+  const fetchMoreData = () => {
+    setOffset(offset + limit)
+    setLimit(limit)
+  }
 
   useEffect(() => {
     let subscribePokemon = true
-
     async function getPokemonList () {
-      const payload = {}
+      const payload = {
+        offset: offset,
+        limit: limit
+      }
       const response = await PokemonGetListService(payload)
-      if (subscribePokemon) setPokemonList(response.results)
+      if (subscribePokemon) setPokemonList([...pokemonList, ...response.results])
     }
 
     getPokemonList()
@@ -22,13 +32,14 @@ const Home = () => {
     return () => {
       subscribePokemon = false
     }
-  }, [])
+  }, [offset])
 
   useEffect(() => {
+    console.log(pokemonList)
     const elem = []
     pokemonList.forEach((pokemon, index) => {
-      const id = pokemon.url.substr(pokemon.url.length - 2, 1)
-      console.log(id)
+      const arrData = pokemon.url.split('/')
+      const id = arrData[6]
       elem.push(
         <MyCardList.Card
           key={index}
@@ -43,9 +54,16 @@ const Home = () => {
 
   return (
     <div>
-      <MyCardList>
-        {content}
-      </MyCardList>
+      <InfiniteScroll
+        dataLength={pokemonList.length}
+        next={fetchMoreData}
+        hasMore
+        loader={<h4>Loading...</h4>}
+      >
+        <MyCardList>
+          {content}
+        </MyCardList>
+      </InfiniteScroll>
     </div>
   )
 }
