@@ -1,7 +1,7 @@
 <p align="center">
-  <a href="https://github.com/hendri1/pokedex/releases/tag/v0.1.1">
+  <a href="https://github.com/hendri1/pokedex/releases/tag/v0.1.2">
     <img
-      src="https://img.shields.io/static/v1.svg?label=version&message=v0.1.1&style=flat&color=67c23a"
+      src="https://img.shields.io/static/v1.svg?label=version&message=v0.1.2&style=flat&color=67c23a"
       alt="version"
     />
   </a>
