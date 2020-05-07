@@ -1,3 +1,6 @@
+### Running at Github Pages
+(https://hendri1.github.io/pokedex/)[Pokedex]
+
 <p align="center">
   <a href="https://github.com/hendri1/pokedex/releases/tag/v0.1.2">
     <img
@@ -10,6 +13,29 @@
 ### Changelog
 
 Detailed changes for each release are documented in the [release notes](https://github.com/hendri1/pokedex/releases).
+
+### Run Local
+
+#### Requirement
+- Node.js : v12.16.3
+- NPM : v6.14.4
+- Yarn : v1.22.4
+
+#### Step
+```
+- Yarn install
+- cp .env.example .env
+- Yarn start
+```
+
+Default run at http://localhost:3000
+
+### Run With Docker
+```
+- cp .env.example .env
+- docker build -t pokedex:latest .
+- docker run -p 3000:3000 pokedex:latest
+```
 
 ### Maintainers
 
